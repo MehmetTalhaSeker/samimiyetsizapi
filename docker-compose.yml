@@ -1,0 +1,13 @@
+version: '2.1'
+
+services:
+  postgres:
+    container_name: "sam_postgres"
+    image: postgres
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_DB=samimiyetsiz
+      - POSTGRES_PASSWORD=1234
+    volumes:
+      - "./database/data:/var/lib/postgresql/data"
