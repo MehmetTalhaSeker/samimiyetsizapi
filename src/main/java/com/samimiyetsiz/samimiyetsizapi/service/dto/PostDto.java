@@ -1,5 +1,6 @@
 package com.samimiyetsiz.samimiyetsizapi.service.dto;
 
+import com.samimiyetsiz.samimiyetsizapi.entity.Category;
 import com.samimiyetsiz.samimiyetsizapi.entity.Memer;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -16,6 +17,7 @@ public class PostDto {
     private Memer memer;
     private CommentDto commentDto;
     private Long voteNumber;
+    private Category category;
 
 
 

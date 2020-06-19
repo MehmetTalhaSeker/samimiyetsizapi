@@ -13,7 +13,7 @@ import java.util.Optional;
 public class PostService {
 
     @Autowired
-    private PostRepository questionRepository;
+    private PostRepository postrepository;
 
 
 
@@ -26,7 +26,7 @@ public class PostService {
 
 
     public Page<PostDto> readPosts(Pageable pageable){
-        Page<PostDto> page=questionRepository.findAll(pageable).map(q->{
+        Page<PostDto> page=postrepository.findAll(pageable).map(q->{
             PostDto dto=new PostDto();
             dto.setId(q.getId());
             dto.setTitle(q.getTitle());
@@ -39,7 +39,7 @@ public class PostService {
     }
 
     public Optional<PostDto> readPosts(Long id){
-        Optional<PostDto> op=questionRepository.findById(id).map(q->{
+        Optional<PostDto> op=postrepository.findById(id).map(q->{
             PostDto dto=new PostDto();
             dto.setMemer(q.getMemer());
             dto.setTitle(q.getTitle());

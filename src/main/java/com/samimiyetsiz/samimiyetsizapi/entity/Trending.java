@@ -13,4 +13,5 @@ public class Trending extends AbstractEntity {
 
     @ManyToOne
     private Post post;
+
 }

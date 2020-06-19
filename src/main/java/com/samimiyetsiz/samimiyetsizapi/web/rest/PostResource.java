@@ -4,6 +4,7 @@ import com.samimiyetsiz.samimiyetsizapi.entity.Category;
 import com.samimiyetsiz.samimiyetsizapi.entity.Post;
 import com.samimiyetsiz.samimiyetsizapi.exception.BadRequest;
 import com.samimiyetsiz.samimiyetsizapi.repository.PostRepository;
+import com.samimiyetsiz.samimiyetsizapi.service.TrendingService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -27,6 +28,9 @@ public class PostResource {
 
     @Autowired
     private PostRepository postRepository;
+
+    @Autowired
+    private TrendingService trendingService;
 
     @PostMapping
     public ResponseEntity<Post> createPost(@RequestBody Post post) throws URISyntaxException {
@@ -72,6 +76,12 @@ public class PostResource {
     @DeleteMapping("{id}")
     public ResponseEntity<Void> deletePost(@PathVariable Long id) {
         postRepository.deleteById(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @GetMapping("/hot")
+    public ResponseEntity<Post> readHot() {
+        trendingService.showHots();
         return ResponseEntity.ok().build();
     }
 
